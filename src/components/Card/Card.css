@@ -1,0 +1,24 @@
+.Card_contenedor {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: solid 2px white;
+  border-radius: 20px;
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+.Card_button {
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: gray;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  
+}
+
+.Card_image{
+  border-radius: 20px;
+}
