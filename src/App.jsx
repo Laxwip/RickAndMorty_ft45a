@@ -35,7 +35,7 @@ function App() {
    }
    return (
       <div className='App'>
-         <Nav onSearch = {onSearch}></Nav>
+         <Nav onSearch = {onSearch} ></Nav>
          <Cards onClose = {onClose} characters={characters}/>
       </div>
    );

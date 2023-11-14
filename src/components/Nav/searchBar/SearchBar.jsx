@@ -8,6 +8,14 @@ export default function SearchBar({ onSearch }) {
    const handleChange = (event) =>{
       setId(event.target.value);
    }
+   const handleDelete = () =>{
+      setId("")
+   }
+   //Declaramos una funcion que dara un id random y ejecutara la funcion de onSearch con dicho id
+   const randomPersonaje = () =>{
+      const numRamdom = Math.floor(Math.random() * (826 - 1 + 1)) + 1;
+      onSearch(numRamdom)
+   }
    return (
       <div className="Search_contenedor">
          <input 
@@ -19,10 +27,20 @@ export default function SearchBar({ onSearch }) {
 
          <button 
          className = "Search_button" 
-         onClick = {()=>
-            onSearch(id)
+         onClick = {()=>{
+            onSearch(id);
+            handleDelete();
+         }
+            
          }
          >Agregar
+         </button>
+
+         <button
+         className="Search_ramdom"
+         onClick={() =>
+            randomPersonaje()}>
+            Random
          </button>
       </div>
    );
