@@ -1,6 +1,10 @@
 .Search_contenedor {
   display: flex;
   align-items: center;
+  margin-right: 50px;
+}
+.Search_contenedor input, .Search_contenedor button{
+  margin: 10px;
 }
 
 .Search_input {

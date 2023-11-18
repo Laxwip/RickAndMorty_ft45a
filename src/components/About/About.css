@@ -1,0 +1,25 @@
+.About_contenedor{
+  height: 80vh;
+  margin-top: 30px;
+  border-radius: 80vh 50px 50px 80vh;
+  border: solid 5px greenyellow;
+  display: flex;
+  align-items: center;
+}
+
+.About_contenedor img{
+  height: 60vh;
+  width: 60vh;
+  border-radius: 60vh;
+  margin-left: 10vh;
+}
+
+.About_contenedor div{
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+  /* justify-content: ; */
+  align-items: center;
+}
+
+

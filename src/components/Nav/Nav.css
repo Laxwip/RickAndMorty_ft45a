@@ -1,0 +1,19 @@
+.Nav_contenedor{
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(102, 232, 115, 0.33);
+  width: 100%;
+  height: 70px;
+  border: solid 3px greenyellow;
+  border-radius: 20px;
+}
+
+.Nav_contenedor_pages{
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.Nav_contenedor_pages a {
+  margin: 10px;
+}
