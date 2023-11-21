@@ -12,10 +12,10 @@ export default function Card({onClose, id, image, name, status, species, gender,
             <img className="Card_image" src={image} alt='' />
             <h2 className="Card_name">{name}</h2>
          </Link>
-         <span className="Card_status">{status}</span>
-         <span className="Card_species">{species}</span>
-         <span className="Card_gender">{gender}</span>
-         <span className="Card_origin">{origin.name}</span> 
+         <span className="Card_status"><b>Estado:</b> {status}</span>
+         <span className="Card_species"><b>Especie:</b> {species}</span>
+         <span className="Card_gender"><b>Género:</b> {gender}</span>
+         <span className="Card_origin"><b>Origen:</b> {origin.name}</span> 
          
       </div>
    );

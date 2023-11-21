@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function Error() {
   return (
-    <div>
-      <h1>404 xd</h1>
+    <div className='error_container'>
+      <h1></h1>
     </div>
   )
 }

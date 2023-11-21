@@ -1,17 +1,23 @@
 .About_contenedor{
-  height: 80vh;
-  margin-top: 30px;
+  height: 70%;
+  width: 70%;
+  margin-top: -100px;
   border-radius: 80vh 50px 50px 80vh;
-  border: solid 5px greenyellow;
+  border: solid 3px rgb(255, 255, 255);
   display: flex;
+  justify-content: space-evenly;
   align-items: center;
+  box-shadow: 0 0 10px 5px rgb(0, 217, 255),
+  inset 0 0 10px 5px rgb(0, 217, 255);
 }
 
 .About_contenedor img{
-  height: 60vh;
-  width: 60vh;
+  height: 80%;
+  width: 440px;
   border-radius: 60vh;
-  margin-left: 10vh;
+  
+  box-shadow: 0 0 10px 5px rgb(0, 217, 255),
+  inset 0 0 10px 5px rgb(0, 217, 255);
 }
 
 .About_contenedor div{
@@ -22,4 +28,14 @@
   align-items: center;
 }
 
+.About_nombre{
+  text-shadow: 2px 2px 5px  rgb(0, 217, 255);
+  color: rgb(255, 255, 255);
+}
 
+.About_datos{
+  display: flex;
+  width: 40%;
+  height: 100%;
+  align-items: center;
+}
