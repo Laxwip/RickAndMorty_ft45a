@@ -8,9 +8,10 @@ import About from './components/About/About.jsx';
 import Detail from './components/Detail/Detail.jsx';
 import Error from './components/404/error.jsx';
 import Form from './components/Form/Form.jsx';
+import Default from './components/Cards/Default.jsx';
 
 function App() {
-   //Declaramos un estado
+   //Estado local de Personajes
    const [characters, setCharacters] = useState([]);
    //Guardamos la funcion generada por el hook usenavigate
    const navigate = useNavigate()
@@ -62,10 +63,12 @@ function App() {
       email: "",
       password: "",
    })
+   //Estado local de acceso
    const [access, setAccess] = useState(false)
+   //Email y Password de ejemplo para el acceso
    const EMAIL = "laxwip@gmail.com"
    const PASSWORD = "pepito13"
-
+   //Fn para comprobar que el Email y Password 
    const login = (userData) =>{
       if(userData.email == EMAIL && userData.password === PASSWORD){
          setAccess(true)
@@ -74,13 +77,16 @@ function App() {
          alert("Datos erroneos")
       }
    }
+   //Fn para salir de la sesion
    const logOut = () =>{
       setAccess(false)
       navigate("/")
    }
-
+   //Se redirecciona a la pagina de form cuando el acceso es false
    useEffect(() => {
-      !access && navigate('/');
+      //Si access es false dentro de la negacion entonces se ejecuta lo siguiente 
+      // !access && navigate('/');
+      !access && navigate('/home');
    }, [access]);
 
    //Escuchador que sobrescribe los valores de los estados en tiempo real
@@ -141,7 +147,16 @@ function App() {
          <Routes>
             <Route path='/' element={<div className='centered'><Form userData = {userData} handleChange = {handleChange} handleSubmit = {handleSubmit} errors = {errors} ></Form></div>}></Route>
             
-            <Route path='/home' element={<Cards onClose = {onClose} characters={characters}/>}></Route>
+            <Route 
+            path='/home' 
+            element={
+               characters.length > 0 ? (
+                  <Cards onClose = {onClose} characters={characters}/>
+                  ) : (
+                  <Default></Default>
+                  )
+               }
+            ></Route>
 
             <Route path='/about' element={<div className='centered'><About></About></div>}></Route>
 
@@ -156,3 +171,5 @@ function App() {
 }
 
 export default App;
+
+
