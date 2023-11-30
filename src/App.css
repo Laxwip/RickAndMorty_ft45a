@@ -10,3 +10,33 @@
   justify-content: center;
   align-items: center;
 }
+
+.App{
+  position: relative;
+}
+
+#scrollButton {
+  background-color: transparent;
+  height: 50px;
+  width: 50px;
+  border: 2px solid white;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 50px;
+  position: fixed;
+  bottom: 20px; 
+  right: 20px;
+
+  &:hover{
+    border:  2px solid white;
+    box-shadow: 0 0 5px 2px rgb(0, 217, 255),
+    inset 0 0 5px 2px rgb(0, 217, 255);
+    color: rgb(0, 217, 255);
+  }
+  &:active{
+    border:  2px solid white;
+    box-shadow: 0 0 5px 2px rgb(0, 217, 255),
+    inset 0 0 5px 2px rgb(0, 217, 255);
+    color: rgb(0, 217, 255);
+  }
+}

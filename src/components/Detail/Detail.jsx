@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react'
 import { useParams} from 'react-router-dom'
+import "./Detail.css"
 
 export default function Detail() {
    //Estado local declarado
@@ -27,13 +28,33 @@ export default function Detail() {
       return setCharacter({});
     }, [id]);
   return (
-    <div>
-      <h1>{character.name}</h1>
-      <h2>{character.status}</h2>
-      <h2>{character.species}</h2>
-      <h2>{character.gender}</h2>
-      <img src={character.image} alt="" />
-      <h2>{character.origin?.name}</h2>
+    <div className='Detail_contenedor'>
+      <img src={character.image} alt={character.name} />
+      <div className="Detail_contenedor_texto_general">
+        <div>
+          <h1 className='Detail_name'>{character.name}</h1>
+        </div>
+        <div className="Detail_contenedor_text">
+            <span className="Detail_id"><b>ID: </b></span>
+            <span className="Detail_id_value">{character.id}</span>
+        </div>
+        <div className="Detail_contenedor_text">
+            <span className="Detail_status"><b>Estado:</b></span>
+            <span className="Detail_status_value">{character.status}</span>
+        </div>
+        <div className="Detail_contenedor_text">
+            <span className="Detail_species"><b>Especie:</b></span>
+            <span className="Detail_species_value">{character.species}</span>
+        </div>
+        <div className="Detail_contenedor_text">
+            <span className="Detail_gender"><b>Género:</b></span>
+            <span className="Detail_gender_value">{character.gender}</span>
+        </div>
+        <div className="Detail_contenedor_text">
+            <span className="Detail_origin"><b>Origen:</b></span> 
+            <span className="Detail_origin_value">{character.origin?.name}</span>
+        </div>
+      </div>
     </div>
   )
 }

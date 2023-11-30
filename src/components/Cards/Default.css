@@ -1,0 +1,7 @@
+.Default_contenedor {
+  display: flex;
+  height: calc(90% - 70px);
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}

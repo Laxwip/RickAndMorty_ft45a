@@ -1,15 +1,15 @@
 .Card_contenedor {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 480px;
+  width: 16%;
+  min-height: 525px;
   background-color: rgba(255, 255, 255, 0.095);
   border: solid 2px rgba(255, 255, 255, 0.161);
   align-items: center;
-  justify-content: center;
+  justify-content: left;
   position: relative;
   border-radius: 150px 150px 20px 20px;
-  padding-bottom: 20px;
+  padding: 25px 25px 25px 25px;
   margin-top: 20px;
   box-shadow: 0px 0px 10px 5px rgb(164, 101, 183);
   transition: box-shadow .3s linear, scale .2s linear, border .2s linear;
@@ -43,6 +43,8 @@
   top: 250px;
   right: 250px;
   background-color: rgba(198, 95, 95, 0.659);
+  /* background-color: transparent; */
+  border: none;
   height: 30px;
   width: 30px;
   border-radius: 50px;
@@ -70,6 +72,7 @@
   background-color: rgba(88, 112, 153, 0.659);
   height: 30px;
   width: 30px;
+  border: none;
   border-radius: 50px;
   transition: background-color .3s linear,
               scale .2s linear,
@@ -93,4 +96,23 @@
   /* &:hover{
     box-shadow: 0px 0px 15px 5px rgb(181, 255, 70);
   } */
+}
+
+.Card_contenedor_text {
+  display: flex;
+  justify-content: center;
+}
+
+.Card_id, .Card_status, .Card_species, .Card_gender, .Card_origin{
+  display: flex;
+  justify-content: start;
+  width: 70px;
+}
+
+.Card_id_value, .Card_status_value, .Card_species_value, .Card_gender_value, .Card_origin_value {
+  display: flex;
+  justify-content: start;
+  width: 100px;
+  margin-left: 20px;
+  text-align: start;
 }
