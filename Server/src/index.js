@@ -1,14 +1,28 @@
 const http = require('http');
+const characters = require("./utils/data.js")
 
-http.createServer((req, res) =>{
+
+http
+.createServer((req, res) =>{
   res.setHeader('Access-Control-Allow-Origin', '*');
-  if(req.url === '/rickandmorty/character'){
-    if(err){
-      res.end('Error');
+  if(req.url.includes('/rickandmorty/character')){
+    const id = req.url.split('/').pop();
+    const character = characters.find(character => character.id == Number(id))
+    if (character){
+      return res
+        .writeHead(200, {'Content-Type': 'application/json'})
+        .end(JSON.stringify(character))
     }else{
-      res.end(JSON.stringify(data));
+      return res
+        .writeHead(404, {'Content-Type': 'application/json'})
+        .end(JSON.stringify({message: 'Character not found'}))
     }
-  }else if(req.url === '/rickandmorty/location'){
-    
   }
-}).listen(3001, "127.0.0.1")
+  else{
+    return res
+      .writeHead(404, {'Content-Type': 'application/json'})
+      .end(JSON.stringify({message: 'Roth not found'}))
+  }
+
+})
+.listen(3001, "127.0.0.1", () => (console.log("Server listening")))

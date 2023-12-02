@@ -22,7 +22,7 @@ function App() {
    //Declaramos un fn onSearch que permite agregar nuevos personajes de una API
    const onSearch = (id) =>{
       //Hacemos una solicitud
-      fetch(`https://rickandmortyapi.com/api/character/${id}`)
+      fetch(`http://localhost:3001/rickandmorty/character/${id}`)
       //convertimos la respuesta HTTP de fetch a un objeto de JS
       .then((res) => res.json())
       //data está tomando el resultado de la respuesta json anterior

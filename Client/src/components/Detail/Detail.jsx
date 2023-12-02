@@ -9,7 +9,7 @@ export default function Detail() {
    useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
+          const response = await fetch(`http://localhost:3001/rickandmorty/character/${id}`);
           const data = await response.json();
     
           if (data.name) {
