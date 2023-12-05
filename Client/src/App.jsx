@@ -13,6 +13,7 @@ import Form from './components/Form/Form.jsx';
 import Default from './components/Cards/Default.jsx';
 import Favorites from './components/Favorites/Favorites.jsx';
 import DefaultFav from './components/Favorites/DefaultFav.jsx';
+import axios from "axios";
 
 function App() {
    //Estado local de Personajes
@@ -20,34 +21,35 @@ function App() {
    //Guardamos la funcion generada por el hook usenavigate
    const navigate = useNavigate()
    //Declaramos un fn onSearch que permite agregar nuevos personajes de una API
-   const onSearch = (id) =>{
-      //Hacemos una solicitud
-      fetch(`http://localhost:3001/rickandmorty/character/${id}`)
-      //convertimos la respuesta HTTP de fetch a un objeto de JS
-      .then((res) => res.json())
-      //data está tomando el resultado de la respuesta json anterior
-      .then(
-         (data) => {
-            //Verificamos si hay algo dentro de data, y luego si dentro de data tenemos un id
-            if(data && data.id){
-               //Verificamos si dentro de nuestro estado local hay algun character que tenga el mismo id con el character que estamos solicitando con el fetch
-               if(characters.some((character) => 
-               //Si coinciden sus id, Nos sale una alerta de que ya existe
-               character.id === data.id)){
-                  window.alert("Ya existe este personaje")
-               //En caso de que no haya coincidencia, se añade a characters el character que solicitamos junto con los que ya teniamos previamente
-               } else{
-                  setCharacters((oldChars) => [data, ...oldChars]);
-               }
-            //Si el id no existe dentro de la base de datos, nos da el mensaje de que no existe
+   const onSearch = (id) => {
+      // Hacemos una solicitud con axios
+      axios.get(`http://localhost:3001/rickandmorty/character/${id}`)
+        .then((response) => {
+          // Convertimos la respuesta HTTP de axios a un objeto de JS
+          const data = response.data;
+    
+          // Verificamos si hay algo dentro de data y luego si dentro de data tenemos un id
+          if (data && data.id) {
+            // Verificamos si dentro de nuestro estado local hay algún character que tenga el mismo id con el character que estamos solicitando con axios
+            if (characters.some((character) => character.id === data.id)) {
+              window.alert("Ya existe este personaje");
             } else {
-               window.alert('¡No hay personajes con este ID!');
+              // En caso de que no haya coincidencia, se añade a characters el character que solicitamos junto con los que ya teníamos previamente
+              setCharacters((oldChars) => [data, ...oldChars]);
             }
-         }
-      );
-      //Luego de la ejecucion de la funcion anterior, se ejecuta o redirecciona al home
-      navigate("/home")
-   }
+          } else {
+            // Si el id no existe dentro de la base de datos, nos da el mensaje de que no existe
+            window.alert('¡No hay personajes con este ID!');
+          }
+    
+          // Luego de la ejecución de la función anterior, se ejecuta o redirecciona al home
+          navigate("/home");
+        })
+        .catch((error) => {
+          // Manejamos el error en caso de que la solicitud falle
+          console.error('Error:', error.message);
+        });
+    };
 
    const dispatch = useDispatch()
 

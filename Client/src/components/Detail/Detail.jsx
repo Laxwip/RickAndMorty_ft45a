@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react'
 import { useParams} from 'react-router-dom'
 import "./Detail.css"
+import axios from 'axios'
 
 export default function Detail() {
    //Estado local declarado
@@ -9,8 +10,8 @@ export default function Detail() {
    useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://localhost:3001/rickandmorty/character/${id}`);
-          const data = await response.json();
+          const response = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);
+          const data = response.data;
     
           if (data.name) {
             setCharacter(data);
