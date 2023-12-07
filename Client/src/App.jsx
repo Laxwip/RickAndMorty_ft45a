@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import {validate} from "./components/Form/validation.js"
 import { useDispatch, useSelector } from 'react-redux';
 import { removeFav } from './redux/actions.js';
+import axios from "axios";
 import Nav from './components/Nav/Nav.jsx';
 import Cards from './components/Cards/Cards.jsx';
 import About from './components/About/About.jsx';
@@ -13,7 +14,6 @@ import Form from './components/Form/Form.jsx';
 import Default from './components/Cards/Default.jsx';
 import Favorites from './components/Favorites/Favorites.jsx';
 import DefaultFav from './components/Favorites/DefaultFav.jsx';
-import axios from "axios";
 
 function App() {
    //Estado local de Personajes
@@ -79,13 +79,14 @@ function App() {
    const EMAIL = "laxwip@gmail.com"
    const PASSWORD = "pepito13"
    //Fn para comprobar que el Email y Password 
-   const login = (userData) =>{
-      if(userData.email == EMAIL && userData.password === PASSWORD){
-         setAccess(true)
-         navigate("/home")
-      } else {
-         alert("Datos erroneos")
-      }
+   function login(userData) {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+         const { access } = data;
+         setAccess(data);
+         access && navigate('/home');
+      });
    }
    //Fn para salir de la sesion
    const logOut = () =>{
@@ -95,8 +96,8 @@ function App() {
    //Se redirecciona a la pagina de form cuando el acceso es false
    useEffect(() => {
       //Si access es false dentro de la negacion entonces se ejecuta lo siguiente 
-      // !access && navigate('/');
-      !access && navigate('/home');
+      !access && navigate('/');
+      // !access && navigate('/home');
    }, [access]);
 
    //Escuchador que sobrescribe los valores de los estados en tiempo real
@@ -163,35 +164,72 @@ function App() {
 
          
          <Routes>
-            <Route path='/' element={<div className='centered'><Form userData = {userData} handleChange = {handleChange} handleSubmit = {handleSubmit} errors = {errors} ></Form></div>}></Route>
+            <Route 
+            path='/' 
+            element = {
+               <div 
+               className = 'centered'>
+                  <Form 
+                  userData = {userData} 
+                  handleChange = {handleChange} 
+                  handleSubmit = {handleSubmit} 
+                  errors = {errors} >
+                  </Form>
+               </div>
+               }
+            ></Route>
             
             <Route 
-            path='/home' 
-            element={
+            path = '/home' 
+            element = {
                characters.length > 0 ? (
-                  <Cards onClose = {onClose} characters={characters}/>
+                  <Cards 
+                  onClose = {onClose} 
+                  characters = {characters}
+                  />
                   ) : (
                   <Default></Default>
                   )
                }
             ></Route>
 
-            <Route path='/about' element={<div className='centered'><About></About></div>}></Route>
+            <Route 
+            path = '/about' 
+            element = {
+               <div 
+                  className = 'centered'>
+                  <About></About>
+               </div>}>
+            </Route>
 
             <Route 
-            path='/favorites' 
-            element={
+            path = '/favorites' 
+            element = {
                favs.length > 0 ? (
-                  <Favorites onClose = {onClose}></Favorites>
+                  <Favorites 
+                  onClose = {onClose}>
+                  </Favorites>
                   ) : (
                      <DefaultFav></DefaultFav>
                )
             }
             ></Route>
 
-            <Route path='/detail/:id' element={<div className='centered'><Detail></Detail></div>}></Route>
+            <Route 
+            path='/detail/:id' 
+            element = { 
+               <div 
+               className='centered'>
+                  <Detail></Detail>
+               </div>}>
+            </Route>
 
-            <Route path='*' element={<Error></Error>}></Route>
+            <Route 
+               path='*' 
+               element = {
+               <Error></Error>
+               }
+            ></Route>
 
          </Routes>
          

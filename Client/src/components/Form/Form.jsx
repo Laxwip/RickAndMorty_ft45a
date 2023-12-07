@@ -8,8 +8,10 @@ export default function Form({userData, handleChange, handleSubmit, errors}) {
         <span className='form_bienvenido'>Welcome!</span>
         <form className='form_form' onSubmit={handleSubmit}>
           <div className='form_espaciado'>
-          <label className='form_label_email'>Email:</label>
+
+          <label className='form_label_email' htmlFor = "email">Email:</label>
           <input 
+            id="email"
             className="form_input_email" 
             type="email" 
             key="email"
@@ -23,8 +25,10 @@ export default function Form({userData, handleChange, handleSubmit, errors}) {
           <br />
 
          <div className='form_espaciado'>
-         <label className='form_label_password'>Password:</label>
+
+         <label className='form_label_password' htmlFor = "password" >Password:</label>
           <input 
+            id="password"
             className="form_input_password" 
             type="password" 
             key="password"

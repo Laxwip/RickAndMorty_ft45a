@@ -19,6 +19,7 @@ export default function SearchBar({ onSearch }) {
    return (
       <div className="Search_contenedor">
          <input 
+         id="search_input"
          className = "Search_input" 
          type = 'text' 
          value = {id} 

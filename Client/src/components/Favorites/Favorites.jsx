@@ -37,7 +37,7 @@ export default function Favorites({onClose}) {
       </div>
       <div className="Favorites_cards">
         {
-        myFavorites && myFavorites?.map((character) => 
+        myFavorites && myFavorites?.map((character, index) => 
         <Card 
         /*
         El {...character} desestructura las propiedades del character y se las pasa como props individuales a la card, esto seria lo mismo que hacer:
@@ -45,7 +45,7 @@ export default function Favorites({onClose}) {
         name = {character.name}
         */
         {...character}
-        key = {character.id} 
+        key = {index} 
         onClose={onClose}
         >
         </Card>
