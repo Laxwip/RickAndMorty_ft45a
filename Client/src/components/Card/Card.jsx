@@ -18,7 +18,7 @@ export default function Card({onClose, id, image, name, status, species, gender,
    //       }
    //    }
    // }
-
+   
    const [isFav, setIsFav] = useState(false)
 
    const handleFavorite = () => {
